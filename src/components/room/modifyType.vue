@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="add()">
+    <form @submit.prevent="modify()">
         <div class="form-group">
             <label for="exampleInputEmail1">编码</label>
             <input v-model="room.code" type="text" class="form-control">
@@ -13,16 +13,15 @@
         </div>
         <button type="submit" class="btn btn-primary">提交</button>
         <button @click="backToList" class="btn btn-default">取消</button>
-        <button @click="goToAddType" class="btn btn-primary">添加类型</button>
     </form>
 </template>
 
 <script>
     const axios = require('axios');
     import router from '../../router'
-
+    
     export default {
-        name: "RoomAdd",
+        name: "RoomModify",
         data() {
             return {
                 room: {
@@ -31,31 +30,25 @@
                         id: null
                     }
                 },
-                typeList: []
+                typeList:[]
             };
         },
         created() {
             this.getTypeList();
         },
         methods: {
-            add() {
-                axios.post('http://localhost:2333/room/add', this.room)
-                    .then(response => {
-                        console.log(response);
-                        this.backToList()
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    });
+            modify() {
+                axios.post('http://localhost:2333/room/modify', this.room)
+                  .then(response=> {
+                    console.log(response);
+                    router.push('/room')
+                  })
+                  .catch(error=> {
+                    console.log(error);
+                  });
             },
-            getTypeList() {
+            getTypeList(){
                 //TODO get room type list here
-            },
-            backToList() {
-                router.push('/room')
-            },
-            goToAdd(){
-                router.push('/addType')
             }
         }
     }

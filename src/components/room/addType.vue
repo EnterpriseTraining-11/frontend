@@ -55,7 +55,7 @@
                 router.push('/room')
             },
             goToAdd(){
-                router.push('/addType')
+                router.push('/room')
             }
         }
     }
