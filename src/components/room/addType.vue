@@ -22,7 +22,7 @@
     import router from '../../router'
 
     export default {
-        name: "RoomAdd",
+        name: "RoomTypeAdd",
         data() {
             return {
                 room: {
@@ -39,7 +39,7 @@
         },
         methods: {
             add() {
-                axios.post('http://localhost:2333/roomType/add', this.typeList.get(this.typeList.indexOf(this.room.type.id))
+                axios.post('http://localhost:2333/roomType/add', this.room)
                     .then(response => {
                         console.log(response);
                         this.backToList()
