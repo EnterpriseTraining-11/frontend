@@ -39,7 +39,7 @@
         },
         methods: {
             add() {
-                axios.post('http://localhost:2333/roomType/add', this.room)
+                axios.post('http://localhost:2333/roomType/add', this.typeList.get(this.typeList.indexOf(this.room.type.id))
                     .then(response => {
                         console.log(response);
                         this.backToList()
