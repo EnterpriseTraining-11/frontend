@@ -42,7 +42,8 @@
                     <div class="pull-left info">
                         <p>Alexander Pierce</p>
                         <!-- Status -->
-                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        <router-link to="/login"><i class="fa fa-circle text-success"></i> <span>Login</span></router-link>
+                        <!-- <a href="#"><i class="fa fa-circle text-success"></i> Online</a> -->
                     </div>
                 </div>
 
