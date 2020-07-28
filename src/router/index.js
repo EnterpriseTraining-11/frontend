@@ -4,6 +4,9 @@ import VueRouter from 'vue-router'
 import HomeMain from '../components/home/main.vue'
 import RoomMain from '../components/room/main.vue'
 import RoomList from '../components/room/list.vue'
+import RoomAdd from '../components/room/add.vue'
+
+
 import AdminLogin from '../components/admin/login.vue'
 
 Vue.use(VueRouter)
@@ -16,7 +19,7 @@ const routes = [{
     path: '/room',
     name: 'Room',
     component: RoomMain,
-    children: [{path: 'list',component: RoomList},{path:'',redirect:'list'}]
+    children: [{path:'',redirect:'list'},{path: 'list',component: RoomList},{path:'add',component:RoomAdd}]
 }, {
     path: '/login',
     name: 'Login',

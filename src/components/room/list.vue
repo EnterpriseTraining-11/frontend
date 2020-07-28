@@ -21,12 +21,13 @@
                     <td>{{room.type.message}}</td>
                     <td>
                         <router-link to="/room/modify" class="btn btn-default">修改</router-link>
-                        <a class="btn btn-danger">删除</a>
+                        <a @click="deleteRoom(room.id)" class="btn btn-danger">删除</a>
                         <router-link to="/room/add" class="btn btn-default">查看</router-link>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <router-link to="/room/add" class="btn btn-default">增加</router-link>
     </div>
 </template>
 
@@ -55,6 +56,23 @@
                     console.log(response);
                     this.roomList = response.data.models;
                 });
+            },
+            deleteRoom(room_id) {
+                let confirmResult = confirm("确认删除？");
+                if (!confirmResult) {
+                    return;
+                }
+                axios.post('http://localhost:2333/room/delete', {
+                    id: room_id
+                  })
+                  .then(response=> {
+                    console.log(response);
+                    this.getList();
+                  })
+                  .catch(error=> {
+                    console.log(error);
+                  });
+
             }
         }
     }

@@ -2,7 +2,7 @@
     <div class="login-box-body">
         <p class="login-box-msg">请输入登录信息</p>
 
-        <form>
+        <form @submit.prevent="login()">
             <div class="form-group has-feedback">
                 <input v-model="name" type="text" class="form-control" required placeholder="账号">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -14,7 +14,7 @@
             <div class="row">
                 <!-- /.col -->
                 <div class="col-xs-12">
-                    <button @click="login" class="btn btn-primary btn-block btn-flat">登录</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
                 </div>
                 <!-- /.col -->
             </div>
