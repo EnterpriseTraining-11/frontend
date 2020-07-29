@@ -19,7 +19,7 @@
           <td>{{type.max_num}}</td>
           <td>{{type.message}}</td>
           <td>
-            <router-link :to="{name:'ModifyType',params:{typeId:type.id}}" class="btn btn-default">修改</router-link>
+            <router-link to="/room/modifyType" class="btn btn-default">修改</router-link>
             <a @click="deleteType(type.id)" class="btn btn-danger">删除</a>
           </td>
         </tr>
@@ -34,7 +34,7 @@ export default {
   name: "RoomListType",
   data() {
     return {
-      typeList: [{id:0,name:"type",price:233,max_num:1,message:"message"}],
+      typeList: [],
     };
   },
   created() {
@@ -43,7 +43,7 @@ export default {
   methods: {
     getList() {
       this.axiosJSON
-        .get("http://localhost:2333/roomType/all", {
+        .get("http://localhost:2333/type/all", {
           params: {},
         })
         .then((response) => {
@@ -57,7 +57,7 @@ export default {
         return;
       }
       this.axiosJSON
-        .post("type/remove", {
+        .post("type/delete", {
           id: type_id,
         })
         .then((response) => {

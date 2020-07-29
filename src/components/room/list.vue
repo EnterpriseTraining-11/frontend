@@ -17,7 +17,7 @@
                     <td>{{room.code}}</td>
                     <td>{{room.type.name}}</td>
                     <td>{{room.type.price}}</td>
-                    <td>{{room.type.max_num}}</td>
+                    <td>{{room.type.maxNum}}</td>
                     <td>{{room.type.message}}</td>
                     <td>
                         <router-link to="/room/modify" class="btn btn-default">修改</router-link>
