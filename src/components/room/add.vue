@@ -9,7 +9,7 @@
         <label for="exampleInputPassword1">类型</label>
         <select v-model="room.type.id" class="form-control">
           <option disabled value>请选择房间类型</option>
-          <option v-for="type in typeList" v-bind:key="type.id" value="type.id">{{type.name}}</option>
+          <option v-for="type in typeList" v-bind:key="type.id" value="{{type.id}}">{{type.name}}</option>
         </select>
       </div>
       <button type="submit" class="btn btn-primary">提交</button>
