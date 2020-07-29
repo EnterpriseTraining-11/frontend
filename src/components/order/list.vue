@@ -26,10 +26,6 @@
             </ul>
           </td>
           <td>
-            <router-link
-              :to="{name: 'ModifyOrder',params: {orderId: order.id}}"
-              class="btn btn-default"
-            >修改</router-link>
             <a @click="deleteOrder(order.id)" class="btn btn-danger">删除</a>
           </td>
         </tr>
@@ -51,7 +47,12 @@ export default {
           start: new Date("December 17, 1995 03:24:00").toLocaleDateString(),
           end: new Date("December 17, 2995 03:24:00").toLocaleDateString(),
           status: "绝赞活跃中",
-          guests:[{name:"大力"},{name:"紫藤"},{name:"龙龙"},{name:"楠楠"}]
+          guests: [
+            { name: "大力" },
+            { name: "紫藤" },
+            { name: "龙龙" },
+            { name: "楠楠" },
+          ],
         },
       ],
       page: 0,
