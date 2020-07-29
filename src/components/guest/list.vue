@@ -107,7 +107,7 @@ export default {
         return;
       }
       this.axiosJSON
-        .post("guest/delete", {
+        .post("guest/remove", {
           id: guest_id,
         })
         .then((response) => {
