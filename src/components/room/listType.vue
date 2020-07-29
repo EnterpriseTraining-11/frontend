@@ -43,7 +43,7 @@ export default {
   methods: {
     getList() {
       this.axiosJSON
-        .get("http://localhost:2333/type/all", {
+        .get("type/all", {
           params: {},
         })
         .then((response) => {

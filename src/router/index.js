@@ -36,7 +36,7 @@ const routes = [
                 children: [{ path: 'addType', component: RoomAddType }, { path: 'listType', component: RoomListType }]
             },
             {
-                path: 'modify', name: 'ModifyRoom', component: RoomModify,
+                path: 'modify/:roomId', name: 'ModifyRoom', component: RoomModify,
                 props: true
             },
             { path: 'addType', component: RoomAddType },
