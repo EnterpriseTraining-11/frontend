@@ -32,6 +32,8 @@
 </template>
 
 <script>
+
+
     export default {
         name: "RoomList",
         data() {
@@ -48,7 +50,7 @@
         },
         methods: {
             getList() {
-                this.axiosJson.get("room/query/all", {
+                this.axiosJSON.get("room/query/all", {
                     params: {}
                 }).then(response => {
                     console.log(response);
@@ -60,7 +62,7 @@
                 if (!confirmResult) {
                     return;
                 }
-                this.axiosJson.post('room/remove', {
+                this.axiosJSON.post('room/remove', {
                     id: room_id
                   })
                   .then(response=> {
