@@ -21,34 +21,28 @@
     import router from '../../router'
     
     export default {
-        name: "RoomModify",
+        name: "TypeModify",
         data() {
             return {
-                room: {
-                    code: null,
-                    type: {
-                        id: null
-                    }
-                },
-                typeList:[]
+                type: {
+                    id:null,
+                    name: null,
+                    price: null,
+                    max_num:null,
+                    message:null
+                }
             };
-        },
-        created() {
-            this.getTypeList();
         },
         methods: {
             modify() {
-                axios.post('http://localhost:2333/room/modify', this.room)
+                axios.post('http://localhost:2333/type/modify', this.type)
                   .then(response=> {
                     console.log(response);
-                    router.push('/room')
+                    router.push('/typeList')
                   })
                   .catch(error=> {
                     console.log(error);
                   });
-            },
-            getTypeList(){
-                //TODO get room type list here
             }
         }
     }

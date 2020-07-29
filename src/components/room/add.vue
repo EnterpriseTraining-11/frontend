@@ -12,8 +12,8 @@
             </select>
         </div>
         <button type="submit" class="btn btn-primary">提交</button>
-        <button @click="backToList" class="btn btn-default">取消</button>
-        <button @click="goToAddType" class="btn btn-primary">添加类型</button>
+        <router-link to="/room/" class="btn btn-default">取消</router-link>
+        <router-link to="/room/typeAdd" class="btn btn-default">增加类型</router-link>
     </form>
 </template>
 
@@ -50,12 +50,6 @@
             },
             getTypeList() {
                 //TODO get room type list here
-            },
-            backToList() {
-                router.push('/room')
-            },
-            goToAdd(){
-                router.push('/addType')
             }
         }
     }

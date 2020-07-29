@@ -6,14 +6,13 @@
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">类型</label>
-            <select v-model="room.type.id"  class="form-control">
+            <select v-model="room.type.id" class="form-control">
                 <option disabled value="">请选择房间类型</option>
                 <option v-for="type in typeList" v-bind:key="type.id" value="type.id">{{type.name}}</option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary">提交</button>
-        <button @click="backToList" class="btn btn-default">取消</button>
-        <button @click="goToAddType" class="btn btn-primary">添加类型</button>
+        <router-link to="/room/" class="btn btn-default">取消</router-link>
     </form>
 </template>
 
@@ -47,15 +46,6 @@
                     .catch(error => {
                         console.log(error);
                     });
-            },
-            getTypeList() {
-                //TODO get room type list here
-            },
-            backToList() {
-                router.push('/room')
-            },
-            goToAdd(){
-                router.push('/room')
             }
         }
     }

@@ -12,21 +12,20 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="room in roomList" v-bind:key="room.id">
-                    <th scope="row">{{room.id}}</th>
-                    <td>{{room.code}}</td>
-                    <td>{{room.type.name}}</td>
-                    <td>{{room.type.price}}</td>
-                    <td>{{room.type.max_num}}</td>
-                    <td>{{room.type.message}}</td>
+                <tr v-for="type in typeList" v-bind:key="type.id">
+                    <th scope="row">{{type.id}}</th>
+                    <td>{{type.name}}</td>
+                    <td>{{type.price}}</td>
+                    <td>{{type.max_num}}</td>
+                    <td>{{type.message}}</td>
                     <td>
-                        <router-link to="/room/modify" class="btn btn-default">修改</router-link>
+                        <router-link to="/room/typeModify" class="btn btn-default">修改</router-link>
                         <a @click="deleteRoom(room.id)" class="btn btn-danger">删除</a>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <router-link to="/room/add" class="btn btn-default">增加</router-link>
+        <router-link to="/room/typeAdd" class="btn btn-default">增加</router-link>
     </div>
 </template>
 
@@ -34,14 +33,10 @@
     const axios = require('axios');
 
     export default {
-        name: "RoomList",
+        name: "TypeList",
         data() {
             return {
-                roomList: [],
-                page: 0,
-                rows: 10,
-                count: 0,
-                pageCount: 0
+                typeList: []
             };
         },
         created() {
@@ -49,20 +44,20 @@
         },
         methods: {
             getList() {
-                axios.get("http://localhost:2333/room/all-with-type", {
+                axios.get("http://localhost:2333/type/all", {
                     params: {}
                 }).then(response => {
                     console.log(response);
-                    this.roomList = response.data.models;
+                    this.typeList = response.data.models;
                 });
             },
-            deleteRoom(room_id) {
+            deleteRoom(type_id) {
                 let confirmResult = confirm("确认删除？");
                 if (!confirmResult) {
                     return;
                 }
-                axios.post('http://localhost:2333/room/delete', {
-                    id: room_id
+                axios.post('http://localhost:2333/type/delete', {
+                    id: type_id
                   })
                   .then(response=> {
                     console.log(response);
