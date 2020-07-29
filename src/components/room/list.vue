@@ -20,7 +20,7 @@
                     <td>{{room.type.max_num}}</td>
                     <td>{{room.type.message}}</td>
                     <td>
-                        <router-link to="/room/modify" class="btn btn-default">修改</router-link>
+                        <router-link :to="{name: 'ModifyRoom',params: {roomId: room.id}}" class="btn btn-default">修改</router-link>
                         <a @click="deleteRoom(room.id)" class="btn btn-danger">删除</a>
                     </td>
                 </tr>
@@ -35,7 +35,7 @@
         name: "RoomList",
         data() {
             return {
-                roomList: [],
+                roomList: [{id:0,code:0,type:{id:0,name:"type",price:233,max_num:1,message:"message"}}],
                 page: 0,
                 rows: 10,
                 count: 0,

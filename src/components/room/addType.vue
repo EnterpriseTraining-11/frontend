@@ -19,7 +19,7 @@
         <input v-model="room.code" type="text" class="form-control" />
       </div>
       <button type="submit" class="btn btn-primary">提交</button>
-      <button @click="goPrev">取消</button>
+      <button @click.prevent="goPrev" class="btn btn-default">取消</button>
     </form>
   </div>
 </template>
@@ -46,6 +46,7 @@ export default {
   },
   methods: {
     add() {
+        console.log("add");
       this.axiosJSON
         .post("roomType/add", this.room)
         .then((response) => {

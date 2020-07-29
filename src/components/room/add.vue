@@ -13,9 +13,9 @@
         </select>
       </div>
       <button type="submit" class="btn btn-primary">提交</button>
-      <router-link to="/room/" class="btn btn-default">取消</router-link>
-      <router-link to="/room/add/addType" class="btn btn-default">增加类型</router-link>
-      <router-link to="/room/add/listType" class="btn btn-default">管理类型类型</router-link>
+      <button @click.prevent="goPrev" class="btn btn-default">取消</button>
+      <router-link :to="{name: 'ModifyRoomAddType',params: {room: room}}" class="btn btn-default">增加类型</router-link>
+      <router-link :to="{name: 'ModifyRoomListType',params: {room: room}}" class="btn btn-default">管理类型类型</router-link>
     </form>
     <router-view></router-view>
   </div>
@@ -55,6 +55,9 @@ export default {
     getTypeList() {
       //TODO get room type list here
     },
+    goPrev(){
+        router.go(-1);
+    }
   },
 };
 </script>

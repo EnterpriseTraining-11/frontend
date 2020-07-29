@@ -15,30 +15,43 @@ import AdminLogin from '../components/admin/login.vue'
 
 Vue.use(VueRouter)
 
-const routes = [{
-    path: '/',
-    name: 'Home',
-    component: HomeMain
-}, {
-    path: '/room',
-    name: 'Room',
-    component: RoomMain,
-    children: [
-        { path: '', redirect: 'list' },
-        { path: 'list', component: RoomList },
-        { path: 'add', component: RoomAdd ,children:[{ path: 'addType', component: RoomAddType },{ path: 'listType', component: RoomListType }]},
-        { path: 'modify', component: RoomModify },
-        { path: 'addType', component: RoomAddType },
-        { path: 'modifyType', component: RoomModifyType },
-        { path: 'listType', component: RoomListType }
+const routes = [
+    {
+        path: '/',
+        name: 'Home',
+        component: HomeMain
+    },
+    {
+        path: '/room',
+        name: 'Room',
+        component: RoomMain,
+        children: [
+            { path: '', redirect: 'list' },
+            { path: 'list', component: RoomList },
+            {
+                path: 'add', component: RoomAdd,
+                children: [{ path: 'addType', component: RoomAddType }, { path: 'listType', component: RoomListType }]
+            },
+            {
+                path: 'modify/:roomId', name: 'ModifyRoom', component: RoomModify,
+                props: true
+            },
+            { path: 'addType', component: RoomAddType },
+            {
+                path: 'modifyType/:typeId',name:'ModifyType', component: RoomModifyType,
+                props: true
+            },
+            { path: 'listType', component: RoomListType }
 
-        
-    ]
-}, {
-    path: '/login',
-    name: 'Login',
-    component: AdminLogin
-}]
+
+        ]
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: AdminLogin
+    }
+]
 
 const router = new VueRouter({
     mode: 'history',
