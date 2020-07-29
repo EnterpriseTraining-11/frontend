@@ -49,6 +49,7 @@ export default {
   },
   created() {
     this.type.id = this.typeId;
+    this.getOldVal();
   },
   methods: {
     modify() {
@@ -56,7 +57,18 @@ export default {
         .post("roomType/update", this.type)
         .then((response) => {
           console.log(response);
-          router.push("/listType");
+          router.go(-1);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    getOldVal() {
+      this.axiosJSON
+        .get("roomType/query/id", { params: { id: this.type.id } })
+        .then((response) => {
+          console.log(response);
+          this.type = response.data.model;
         })
         .catch((error) => {
           console.log(error);
