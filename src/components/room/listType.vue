@@ -43,7 +43,7 @@ export default {
   methods: {
     getList() {
       this.axiosJSON
-        .get("roomType/all", {
+        .get("roomType/query/all", {
           params: {},
         })
         .then((response) => {

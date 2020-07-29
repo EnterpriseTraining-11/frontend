@@ -53,7 +53,10 @@ const routes = [
         children: [
             { path: '', redirect: 'list' },
             { path: 'list', component: GuestList },
-            { path: 'addAndModify/:idCard?', name: "AddAndModifyGuest", component: AddAndModifyGuest, porps: true }
+            {
+                path: 'addAndModify/:idCard?', name: "AddAndModifyGuest", component: AddAndModifyGuest,
+                porps: (route) => ({ idCard: route.params.idCard })
+            }
         ]
     },
     {

@@ -2,7 +2,7 @@
   <div>
     <form @submit.prevent="add()">
       <div class="form-group">
-        <label for="exampleInputEmail1">编码</label>
+        <label>编码</label>
         <input v-model="room.code" type="text" class="form-control" />
       </div>
       <div class="form-group">
@@ -53,7 +53,7 @@ export default {
         });
     },
     getTypeList() {
-      this.axiosJSON.get("roomType/all", {
+      this.axiosJSON.get("roomType/query/all", {
           params: {}
       }).then(response => {
           console.log(response);
