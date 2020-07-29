@@ -53,7 +53,12 @@ export default {
         });
     },
     getTypeList() {
-      //TODO get room type list here
+      this.axiosJSON.get("roomType/all", {
+          params: {}
+      }).then(response => {
+          console.log(response);
+          this.typeList = response.data.models;
+      });
     },
     goPrev(){
         router.go(-1);
