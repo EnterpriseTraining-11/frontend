@@ -36,7 +36,7 @@
           <th scope="row">{{guest.id}}</th>
           <td>{{guest.idCard}}</td>
           <td>{{guest.name}}</td>
-          <td>{{guest.sex}}</td>
+          <td>{{guest.gender}}</td>
           <td>{{guest.phone}}</td>
           <td>
             <router-link
@@ -48,7 +48,7 @@
         </tr>
       </tbody>
     </table>
-    <router-link to="/guest/addAndModifyGuest" class="btn btn-default">增加</router-link>
+    <router-link to="/guest/addAndModify" class="btn btn-default">增加</router-link>
   </div>
 </template>
 
@@ -62,7 +62,7 @@ export default {
           id: 0,
           idCard: 0,
           name: "type",
-          sex: "男",
+          gender: "男",
           phone: "10086",
         },
       ],

@@ -11,6 +11,9 @@ import RoomAddType from '../components/room/addType.vue'
 import RoomModifyType from '../components/room/modifyType.vue'
 import RoomListType from '../components/room/listType.vue'
 
+import AddAndModifyGuest from '../components/guest/addAndModify.vue'
+import GuestList from '../components/guest/list.vue'
+
 import AdminLogin from '../components/admin/login.vue'
 
 Vue.use(VueRouter)
@@ -38,12 +41,20 @@ const routes = [
             },
             { path: 'addType', component: RoomAddType },
             {
-                path: 'modifyType/:typeId',name:'ModifyType', component: RoomModifyType,
+                path: 'modifyType/:typeId', name: 'ModifyType', component: RoomModifyType,
                 props: true
             },
             { path: 'listType', component: RoomListType }
-
-
+        ]
+    },
+    {
+        path: '/guest',
+        name: 'Guest',
+        component: RoomMain,
+        children: [
+            { path: '', redirect: 'list' },
+            { path: 'list', component: GuestList },
+            { path: 'addAndModify', component: AddAndModifyGuest }
         ]
     },
     {

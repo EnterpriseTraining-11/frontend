@@ -37,15 +37,14 @@ export default {
           price:null,
           maxNum:null,
           message:null
-        },
-      typeList: [],
+        }
     };
   },
   methods: {
     add() {
         console.log("add");
       this.axiosJSON
-        .post("roomType/add", this.room)
+        .post("roomType/add", this.type)
         .then((response) => {
           console.log(response);
         })

@@ -37,10 +37,10 @@
                         <router-link to="/room"><i class="fa fa-link"></i> <span>房间</span></router-link>
                     </li>
                     <li>
-                        <router-link to="/room"><i class="fa fa-link"></i> <span>订房</span></router-link>
+                        <router-link to="/order"><i class="fa fa-link"></i> <span>订房</span></router-link>
                     </li>
                     <li>
-                        <router-link to="/room"><i class="fa fa-link"></i> <span>客户</span></router-link>
+                        <router-link to="/guest"><i class="fa fa-link"></i> <span>客户</span></router-link>
                     </li>
                     <li>
                         <router-link to="/room"><i class="fa fa-link"></i> <span>表单</span></router-link>
