@@ -37,12 +37,12 @@ const routes = [
             },
             {
                 path: 'modify/:roomId', name: 'ModifyRoom', component: RoomModify,
-                props: (route) => ({ roomId: parseInt(route.params.roomId) })
+                props: (route) => { console.log(route); return { roomId: parseInt(route.params.roomId) } }
             },
             { path: 'addType', component: RoomAddType },
             {
                 path: 'modifyType/:typeId', name: 'ModifyType', component: RoomModifyType,
-                props: (route) => ({ typeId: parseInt(route.params.typeId) })
+                props: (route) => { console.log(route); return { typeId: parseInt(route.params.typeId) } }
             },
             { path: 'listType', component: RoomListType }
         ]
@@ -54,8 +54,8 @@ const routes = [
             { path: '', redirect: 'list' },
             { path: 'list', component: GuestList },
             {
-                path: 'addAndModify/:idCard?', name: "AddAndModifyGuest", component: AddAndModifyGuest,
-                porps: (route) => ({ idCard: route.params.idCard })
+                path: 'modify/:idCard?', name: "AddAndModifyGuest", component: AddAndModifyGuest,
+                props: (route) => { console.log(route); return { idCard: route.params.idCard } }
             }
         ]
     },

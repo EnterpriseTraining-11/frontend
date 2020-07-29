@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2 class="form-group">增加类型</h2>
     <form @submit.prevent="add()">
       <div class="form-group">
         <label>身份证</label>
@@ -34,9 +33,7 @@ import router from "../../router";
 
 export default {
   name: "AddAndModifyGuest",
-  props:{
-    idCard:String
-  },
+  props: { idCard: String },
   data() {
     return {
       guest: {
@@ -47,7 +44,7 @@ export default {
       },
     };
   },
-  created(){
+  created() {
     this.guest.idCard = this.idCard;
   },
   methods: {
