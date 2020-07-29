@@ -13,6 +13,8 @@ import RoomListType from '../components/room/listType.vue'
 import AddAndModifyGuest from '../components/guest/addAndModify.vue'
 import GuestList from '../components/guest/list.vue'
 
+import OrderList from '../components/order/list.vue'
+
 import AdminLogin from '../components/admin/login.vue'
 
 Vue.use(VueRouter)
@@ -51,7 +53,15 @@ const routes = [
         children: [
             { path: '', redirect: 'list' },
             { path: 'list', component: GuestList },
-            { path: 'addAndModify/:idCard?',name:"AddAndModifyGuest", component: AddAndModifyGuest,porps:true }
+            { path: 'addAndModify/:idCard?', name: "AddAndModifyGuest", component: AddAndModifyGuest, porps: true }
+        ]
+    },
+    {
+        path: '/order',
+        component: HomeMain,
+        children: [
+            { path: '', redirect: 'list' },
+            { path: 'list', component: OrderList }
         ]
     },
     {

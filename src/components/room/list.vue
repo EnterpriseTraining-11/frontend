@@ -22,7 +22,6 @@
                     <td>
                         <router-link :to="{name: 'ModifyRoom',params: {roomId: room.id}}" class="btn btn-default">修改</router-link>
                         <a @click="deleteRoom(room.id)" class="btn btn-danger">删除</a>
-                        <router-link to="/room/add" class="btn btn-default">查看</router-link>
                     </td>
                 </tr>
             </tbody>
