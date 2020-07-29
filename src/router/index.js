@@ -37,12 +37,12 @@ const routes = [
             },
             {
                 path: 'modify/:roomId', name: 'ModifyRoom', component: RoomModify,
-                props: true
+                props: (route) => ({ roomId: parseInt(route.params.roomId) })
             },
             { path: 'addType', component: RoomAddType },
             {
                 path: 'modifyType/:typeId', name: 'ModifyType', component: RoomModifyType,
-                props: true
+                props: (route) => ({ typeId: parseInt(route.params.typeId) })
             },
             { path: 'listType', component: RoomListType }
         ]
