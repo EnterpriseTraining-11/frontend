@@ -50,7 +50,7 @@
         },
         methods: {
             getList() {
-                axios.get("http://localhost:2333/room/query/all", {
+                this.axiosJson.get("room/query/all", {
                     params: {}
                 }).then(response => {
                     console.log(response);
@@ -62,7 +62,7 @@
                 if (!confirmResult) {
                     return;
                 }
-                axios.post('http://localhost:2333/room/remove', {
+                this.axiosJson.post('room/remove', {
                     id: room_id
                   })
                   .then(response=> {

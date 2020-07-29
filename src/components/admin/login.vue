@@ -40,7 +40,7 @@
         },
         methods:{
             login(){
-                axios.get("restApi",{params:{
+                this.axiosJson.get("restApi",{params:{
                     name:this.name,
                     password:this.password
                 }}).then(response=>{
