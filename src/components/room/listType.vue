@@ -19,7 +19,7 @@
           <td>{{type.max_num}}</td>
           <td>{{type.message}}</td>
           <td>
-            <router-link to="/room/modifyType" class="btn btn-default">修改</router-link>
+            <router-link v-bind:to="'/room/modifyType/'+type.id" class="btn btn-default">修改</router-link>
             <a @click="deleteType(type.id)" class="btn btn-danger">删除</a>
           </td>
         </tr>
@@ -43,7 +43,7 @@ export default {
   methods: {
     getList() {
       this.axiosJSON
-        .get("type/all", {
+        .get("roomType/all", {
           params: {},
         })
         .then((response) => {
@@ -57,7 +57,7 @@ export default {
         return;
       }
       this.axiosJSON
-        .post("type/delete", {
+        .post("roomType/remove", {
           id: type_id,
         })
         .then((response) => {

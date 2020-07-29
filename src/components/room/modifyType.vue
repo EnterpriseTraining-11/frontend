@@ -53,7 +53,7 @@ export default {
   methods: {
     modify() {
       this.axiosJSON
-        .post("type/modify", this.type)
+        .post("roomType/update", this.type)
         .then((response) => {
           console.log(response);
           router.push("/listType");
