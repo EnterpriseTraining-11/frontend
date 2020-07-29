@@ -43,7 +43,7 @@ export default {
   methods: {
     getList() {
       this.axiosJSON
-        .get("http://localhost:2333/type/all", {
+        .get("http://localhost:2333/roomType/all", {
           params: {},
         })
         .then((response) => {
@@ -57,7 +57,7 @@ export default {
         return;
       }
       this.axiosJSON
-        .post("type/delete", {
+        .post("type/remove", {
           id: type_id,
         })
         .then((response) => {
