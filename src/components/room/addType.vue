@@ -4,19 +4,19 @@
     <form @submit.prevent="add()">
       <div class="form-group">
         <label for="exampleInputEmail1">类型名称</label>
-        <input v-model="room.name" type="text" class="form-control" />
+        <input v-model="type.name" type="text" class="form-control" />
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">价格</label>
-        <input v-model="room.price" type="number" class="form-control" />
+        <input v-model="type.price" type="number" class="form-control" />
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">最大人数</label>
-        <input v-model="room.maxNum" type="number" class="form-control" />
+        <input v-model="type.maxNum" type="number" class="form-control" />
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">信息</label>
-        <input v-model="room.message" type="text" class="form-control" />
+        <input v-model="type.message" type="text" class="form-control" />
       </div>
       <button type="submit" class="btn btn-primary">提交</button>
       <button @click.prevent="goPrev" class="btn btn-default">取消</button>
