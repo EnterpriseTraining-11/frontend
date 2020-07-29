@@ -32,10 +32,19 @@
                 <!-- Sidebar Menu -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">HEADER</li>
-                    <li><a href="#"><i class="fa fa-link"></i> <span>房间</span></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i> <span>订房</span></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i> <span>客户</span></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i> <span>表单</span></a></li>
+
+                    <li>
+                        <router-link to="/room"><i class="fa fa-link"></i> <span>房间</span></router-link>
+                    </li>
+                    <li>
+                        <router-link to="/room"><i class="fa fa-link"></i> <span>订房</span></router-link>
+                    </li>
+                    <li>
+                        <router-link to="/room"><i class="fa fa-link"></i> <span>客户</span></router-link>
+                    </li>
+                    <li>
+                        <router-link to="/room"><i class="fa fa-link"></i> <span>表单</span></router-link>
+                    </li>
                     <!-- Optionally, you can add icons to the links -->
                     <!-- <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
                     <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
@@ -59,9 +68,9 @@
 </template>
 
 <script>
-    export default{
-        name:"HomeLeft",
-        data(){
+    export default {
+        name: "HomeLeft",
+        data() {
             return {};
         }
     }

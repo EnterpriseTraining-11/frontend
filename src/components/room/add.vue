@@ -18,7 +18,6 @@
 </template>
 
 <script>
-    const axios = require('axios');
     import router from '../../router'
 
     export default {
@@ -39,10 +38,10 @@
         },
         methods: {
             add() {
-                axios.post('http://localhost:2333/room/add', this.room)
+                this.axiosJSON.post('room/add', this.room)
                     .then(response => {
                         console.log(response);
-                        this.backToList()
+                        router.push("/room")
                     })
                     .catch(error => {
                         console.log(error);

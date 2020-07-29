@@ -3,7 +3,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-Vue.config.productionTip = false
+const axios = require('axios');
+const axiosJSON = axios.create({
+  baseURL: 'https://localhost:2333/'
+});
+
+Vue.config.productionTip = false;
+Vue.prototype.axiosJSON = axiosJSON;
 
 new Vue({
   router,

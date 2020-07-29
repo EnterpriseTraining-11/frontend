@@ -31,8 +31,6 @@
 </template>
 
 <script>
-    const axios = require('axios');
-
     export default {
         name: "RoomList",
         data() {
@@ -49,7 +47,7 @@
         },
         methods: {
             getList() {
-                axios.get("http://localhost:2333/room/all-with-type", {
+                this.axiosJSON.get("room/all-with-type", {
                     params: {}
                 }).then(response => {
                     console.log(response);
@@ -61,7 +59,7 @@
                 if (!confirmResult) {
                     return;
                 }
-                axios.post('http://localhost:2333/room/delete', {
+                this.axiosJSON.post('room/delete', {
                     id: room_id
                   })
                   .then(response=> {

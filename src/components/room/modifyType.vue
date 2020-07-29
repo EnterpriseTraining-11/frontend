@@ -12,14 +12,11 @@
             </select>
         </div>
         <button type="submit" class="btn btn-primary">提交</button>
-        <button @click="backToList" class="btn btn-default">取消</button>
+        <router-link to="/room" class="btn btn-default">取消</router-link>
     </form>
 </template>
 
 <script>
-    const axios = require('axios');
-    import router from '../../router'
-    
     export default {
         name: "TypeModify",
         data() {
@@ -35,7 +32,7 @@
         },
         methods: {
             modify() {
-                axios.post('http://localhost:2333/type/modify', this.type)
+                this.axiosJSON.post('type/modify', this.type)
                   .then(response=> {
                     console.log(response);
                     router.push('/typeList')

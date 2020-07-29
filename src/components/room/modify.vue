@@ -18,7 +18,6 @@
 </template>
 
 <script>
-    const axios = require('axios');
     import router from '../../router'
     
     export default {
@@ -39,7 +38,7 @@
         },
         methods: {
             modify() {
-                axios.post('http://localhost:2333/room/modify', this.room)
+                this.axiosJSON.post('room/modify', this.room)
                   .then(response=> {
                     console.log(response);
                     router.push('/room')

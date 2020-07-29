@@ -30,8 +30,6 @@
 </template>
 
 <script>
-    const axios = require('axios');
-
     export default {
         name: "TypeList",
         data() {
@@ -56,7 +54,7 @@
                 if (!confirmResult) {
                     return;
                 }
-                axios.post('http://localhost:2333/type/delete', {
+                this.axiosJSON.post('type/delete', {
                     id: type_id
                   })
                   .then(response=> {
