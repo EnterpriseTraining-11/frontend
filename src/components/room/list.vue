@@ -20,8 +20,9 @@
                     <td>{{room.type.max_num}}</td>
                     <td>{{room.type.message}}</td>
                     <td>
-                        <router-link :to="{name: 'ModifyRoom',params: {roomId: room.id}}" class="btn btn-default">修改</router-link>
+                        <router-link to="/room/modify" class="btn btn-default">修改</router-link>
                         <a @click="deleteRoom(room.id)" class="btn btn-danger">删除</a>
+                        <router-link to="/room/add" class="btn btn-default">查看</router-link>
                     </td>
                 </tr>
             </tbody>
@@ -31,11 +32,13 @@
 </template>
 
 <script>
+    const axios = require('axios');
+
     export default {
         name: "RoomList",
         data() {
             return {
-                roomList: [{id:0,code:0,type:{id:0,name:"type",price:233,max_num:1,message:"message"}}],
+                roomList: [],
                 page: 0,
                 rows: 10,
                 count: 0,
@@ -47,7 +50,7 @@
         },
         methods: {
             getList() {
-                this.axiosJSON.get("room/query/all", {
+                axios.get("http://localhost:2333/room/query/all", {
                     params: {}
                 }).then(response => {
                     console.log(response);
@@ -59,7 +62,7 @@
                 if (!confirmResult) {
                     return;
                 }
-                this.axiosJSON.post('room/delete', {
+                axios.post('http://localhost:2333/room/remove', {
                     id: room_id
                   })
                   .then(response=> {
