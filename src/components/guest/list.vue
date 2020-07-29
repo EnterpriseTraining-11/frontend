@@ -40,7 +40,7 @@
           <td>{{guest.phone}}</td>
           <td>
             <router-link
-              :to="{name: 'AddAndModifyGuest',params: {guestId: guest.id}}"
+              :to="{name: 'AddAndModifyGuest',params: {idCard: guest.idCard}}"
               class="btn btn-default"
             >修改</router-link>
             <a @click="deleteGuest(guest.id)" class="btn btn-danger">删除</a>

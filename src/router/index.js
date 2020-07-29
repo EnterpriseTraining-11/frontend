@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import HomeMain from '../components/home/main.vue'
-import RoomMain from '../components/room/main.vue'
 import RoomList from '../components/room/list.vue'
 import RoomAdd from '../components/room/add.vue'
 import RoomModify from '../components/room/modify.vue'
@@ -26,8 +25,7 @@ const routes = [
     },
     {
         path: '/room',
-        name: 'Room',
-        component: RoomMain,
+        component: HomeMain,
         children: [
             { path: '', redirect: 'list' },
             { path: 'list', component: RoomList },
@@ -49,12 +47,11 @@ const routes = [
     },
     {
         path: '/guest',
-        name: 'Guest',
-        component: RoomMain,
+        component: HomeMain,
         children: [
             { path: '', redirect: 'list' },
             { path: 'list', component: GuestList },
-            { path: 'addAndModify', component: AddAndModifyGuest }
+            { path: 'addAndModify/:idCard?',name:"AddAndModifyGuest", component: AddAndModifyGuest,porps:true }
         ]
     },
     {

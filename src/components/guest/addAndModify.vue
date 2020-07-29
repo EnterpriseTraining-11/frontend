@@ -34,6 +34,9 @@ import router from "../../router";
 
 export default {
   name: "AddAndModifyGuest",
+  props:{
+    idCard:String
+  },
   data() {
     return {
       guest: {
@@ -43,6 +46,9 @@ export default {
         phone: null,
       },
     };
+  },
+  created(){
+    this.guest.idCard = this.idCard;
   },
   methods: {
     add() {

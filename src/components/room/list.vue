@@ -20,7 +20,7 @@
                     <td>{{room.type.maxNum}}</td>
                     <td>{{room.type.message}}</td>
                     <td>
-                        <router-link v-bind:to="'/room/modify/'+room.id" class="btn btn-default">修改</router-link>
+                        <router-link :to="{name: 'ModifyRoom',params: {roomId: room.id}}" class="btn btn-default">修改</router-link>
                         <a @click="deleteRoom(room.id)" class="btn btn-danger">删除</a>
                         <router-link to="/room/add" class="btn btn-default">查看</router-link>
                     </td>
