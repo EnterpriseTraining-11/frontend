@@ -47,7 +47,7 @@
         },
         methods: {
             getList() {
-                this.axiosJSON.get("room/all-with-type", {
+                this.axiosJSON.get("room/query/all", {
                     params: {}
                 }).then(response => {
                     console.log(response);

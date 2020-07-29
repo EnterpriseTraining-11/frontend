@@ -5,7 +5,7 @@ import store from './store'
 
 const axios = require('axios');
 const axiosJSON = axios.create({
-  baseURL: 'https://localhost:2333/'
+  baseURL: 'http://localhost:2333/'
 });
 
 Vue.config.productionTip = false;

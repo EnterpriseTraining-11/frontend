@@ -5,7 +5,11 @@ import HomeMain from '../components/home/main.vue'
 import RoomMain from '../components/room/main.vue'
 import RoomList from '../components/room/list.vue'
 import RoomAdd from '../components/room/add.vue'
+import RoomModify from '../components/room/modify.vue'
 
+import RoomAddType from '../components/room/addType.vue'
+import RoomModifyType from '../components/room/modifyType.vue'
+import RoomListType from '../components/room/listType.vue'
 
 import AdminLogin from '../components/admin/login.vue'
 
@@ -19,7 +23,17 @@ const routes = [{
     path: '/room',
     name: 'Room',
     component: RoomMain,
-    children: [{path:'',redirect:'list'},{path: 'list',component: RoomList},{path:'add',component:RoomAdd}]
+    children: [
+        { path: '', redirect: 'list' },
+        { path: 'list', component: RoomList },
+        { path: 'add', component: RoomAdd ,children:[{ path: 'addType', component: RoomAddType },{ path: 'listType', component: RoomListType }]},
+        { path: 'modify', component: RoomModify },
+        { path: 'addType', component: RoomAddType },
+        { path: 'modifyType', component: RoomModifyType },
+        { path: 'listType', component: RoomListType }
+
+        
+    ]
 }, {
     path: '/login',
     name: 'Login',
