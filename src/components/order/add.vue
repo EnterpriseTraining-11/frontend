@@ -22,7 +22,7 @@
       <div class="form-group">
         <h2>添加入住人员信息</h2>
         <h3>已添加：</h3>
-        <div  v-for="guest in order.guests" v-bind:key="guest.idCard">
+        <div v-for="guest in order.guests" v-bind:key="guest.idCard">
           <p>{{guest.name}}</p>
           <button @click="removeAddedGuest(guest)" class="btn btn-primary">移除</button>
         </div>
@@ -69,8 +69,14 @@ export default {
     return {
       order: {
         room: { id: null },
-        start: new Date().toISOString().split('T')[0], // format as yyy-MM-dd
-        end: new Date().toISOString().split('T')[0],
+        start: new Date(new Date(Date.now()).setHours(0, 0, 0, 0))
+          .toISOString()
+          .split("T")[0],
+        end: new Date(
+          new Date(Date.now()).setHours(0, 0, 0, 0) + 24 * 60 * 60 * 1000
+        )
+          .toISOString()
+          .split("T")[0],
         status: null,
         guests: [],
       },

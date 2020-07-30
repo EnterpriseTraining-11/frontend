@@ -24,6 +24,7 @@
           <th scope="col">编号</th>
           <th scope="col">房间代码</th>
           <th scope="col">房间类型</th>
+          <th scope="col">房间日付</th>
           <th scope="col">入住时间</th>
           <th scope="col">退房时间</th>
           <th scope="col">订单状态</th>
@@ -32,13 +33,14 @@
       </thead>
       <tbody>
         <tr v-for="order in orderList" v-bind:key="order.id">
-          <th scope="row">{{order.id}}</th>
-          <td>{{order.room.code}}</td>
-          <td>{{order.room.type.name}}</td>
-          <td>{{order.start}}</td>
-          <td>{{order.end}}</td>
-          <td>{{order.status}}</td>
-          <td>
+          <th v-if="!order.hidden" scope="row">{{order.id}}</th>
+          <td v-if="!order.hidden">{{order.room.code}}</td>
+          <td v-if="!order.hidden">{{order.room.type.name}}</td>
+          <td v-if="!order.hidden">{{order.room.type.price}}</td>
+          <td v-if="!order.hidden">{{order.start}}</td>
+          <td v-if="!order.hidden">{{order.end}}</td>
+          <td v-if="!order.hidden">{{order.status}}</td>
+          <td v-if="!order.hidden">
             <ul>
               <li v-for="guest in order.guests" v-bind:key="guest.id">{{guest.name}}</li>
             </ul>
@@ -71,10 +73,17 @@ export default {
             { name: "龙龙" },
             { name: "楠楠" },
           ],
+          hidden:false
         },
       ],
-      start: new Date().toISOString().split("T")[0],
-      end: new Date().toISOString().split("T")[0],
+      start: new Date(new Date(Date.now()).setHours(0, 0, 0, 0))
+        .toISOString()
+        .split("T")[0],
+      end: new Date(
+        new Date(Date.now()).setHours(0, 0, 0, 0) + 24 * 60 * 60 * 1000
+      )
+        .toISOString()
+        .split("T")[0],
       income: 0,
     };
   },
@@ -87,12 +96,6 @@ export default {
     },
   },
   created() {
-    this.end = new Date(this.start);
-    console.log(this.end)
-    this.end = new Date(new Date(this.end).getTime() + 24*60*60*1000);
-    console.log(this.end)
-    this.end = this.end.toISOString().split("T")[0];
-    console.log(this.end)
     this.getList();
   },
   methods: {
@@ -108,17 +111,28 @@ export default {
         });
     },
     getStatistic() {
+      console.log("statistic");
+
       let start = new Date(this.start);
       let end = new Date(this.end);
+
       let income = 0;
       for (let order in this.orderList) {
         order = this.orderList[order];
         let orderStart = new Date(order.start);
         let orderEnd = new Date(order.end);
-        if (start <= orderStart < end) {
+
+        if (
+          parseInt(start.getTime()) <= parseInt(orderStart.getTime()) &&
+          parseInt(orderStart.getTime()) < parseInt(end.getTime())
+        ) {
           let livingTime = orderEnd - orderStart;
           let livingDays = Math.round(livingTime / (1000 * 60 * 60 * 24));
           income += order.room.type.price * livingDays;
+          
+          order.hidden=false;
+        }else{
+          order.hidden=true;
         }
       }
       this.income = income;
