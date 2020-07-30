@@ -79,7 +79,12 @@ export default {
           return;
         }
         this.$store.commit("login", user);
-        this.$router.go(-1);
+        if(this.$route.path=="/login"){
+          this.$router.go(-1);
+        }else{
+          this.$router.push("/");
+        }
+        
         return;
       });
     },
