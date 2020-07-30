@@ -25,6 +25,7 @@
       </tbody>
     </table>
     <router-link to="/room/addType" class="btn btn-default">增加</router-link>
+    <button @click.prevent="goPrev" class="btn btn-default">取消</button>
   </div>
 </template>
 
@@ -67,6 +68,9 @@ export default {
           console.log(error);
         });
     },
+    goPrev(){
+        this.$router.go(-1);
+    }
   },
 };
 </script>
