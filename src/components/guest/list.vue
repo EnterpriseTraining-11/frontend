@@ -69,7 +69,7 @@ export default {
       filter: {
         idCard: null,
         name: null,
-        sex: null,
+        gender: null,
         phone: null,
       },
       page: 0,
@@ -88,7 +88,7 @@ export default {
           params: {
               idCard:this.filter.idCard,
               name:this.filter.name,
-              sex:this.filter.sex,
+              gender:this.filter.gender,
               phone:this.filter.phone,
               page:this.page,
               rows:this.rows,
