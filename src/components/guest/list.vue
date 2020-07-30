@@ -49,7 +49,6 @@
         </tr>
       </tbody>
     </table>
-    <router-link to="/guest/addAndModify" class="btn btn-default">增加</router-link>
   </div>
 </template>
 

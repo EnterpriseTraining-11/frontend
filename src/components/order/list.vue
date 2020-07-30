@@ -34,7 +34,6 @@
         </tr>
       </tbody>
     </table>
-    <router-link to="/order/add" class="btn btn-default">增加</router-link>
   </div>
 </template>
 
