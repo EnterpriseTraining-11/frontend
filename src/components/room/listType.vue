@@ -4,7 +4,6 @@
       <thead>
         <tr>
           <th scope="col">编号</th>
-          <th scope="col">代码</th>
           <th scope="col">类型名称</th>
           <th scope="col">价格</th>
           <th scope="col">最大人数</th>
@@ -16,7 +15,7 @@
           <th scope="row">{{type.id}}</th>
           <td>{{type.name}}</td>
           <td>{{type.price}}</td>
-          <td>{{type.max_num}}</td>
+          <td>{{type.maxNum}}</td>
           <td>{{type.message}}</td>
           <td>
             <router-link v-bind:to="'/room/modifyType/'+type.id" class="btn btn-default">修改</router-link>
