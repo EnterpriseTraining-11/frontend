@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import store from '../store'
-
+  
 import HomeMain from '../components/home/main.vue'
+import MainContent from '../components/common/MainContent.vue'
+
 import RoomList from '../components/room/list.vue'
 import RoomAdd from '../components/room/add.vue'
 import RoomModify from '../components/room/modify.vue'
@@ -31,7 +32,7 @@ const routes = [
     },
     {
         path: '/room',
-        component: HomeMain,
+        component: MainContent,
         children: [
             { path: '', redirect: 'list' },
             { path: 'list', component: RoomList },
@@ -53,7 +54,7 @@ const routes = [
     },
     {
         path: '/guest',
-        component: HomeMain,
+        component: MainContent,
         children: [
             { path: '', redirect: 'list' },
             { path: 'list', component: GuestList },
@@ -65,7 +66,7 @@ const routes = [
     },
     {
         path: '/order',
-        component: HomeMain,
+        component: MainContent,
         children: [
             { path: '', redirect: 'list' },
             { path: 'list', component: OrderList }
@@ -90,19 +91,22 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
     console.log(to);
     if (to.meta.guestAvaliable) {  // 判断该路由是否需要登录权限
+        console.log("guest avaliable")
         next();
     }
     else {
-        if (store.state.token) {  // 通过vuex state获取当前的token是否存在
+        if (localStorage.getItem("authorize")) {  // 通过vuex state获取当前的token是否存在
+            console.log("authorized")
             next();
         }
         else {
+            console.log("to login")
             next({
                 path: '/login',
                 query: {redirect: to.fullPath}  // 将跳转的路由path作为参数，登录成功后跳转到该路由
             })
         }
     }
-})
+  })
 
 export default router
