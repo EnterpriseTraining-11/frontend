@@ -26,9 +26,9 @@
             </ul>
           </td>
           <td>
-            <a @click="markAsBefore(order)" class="btn btn-danger">标记为已预定</a>
-            <a @click="markAsCurrent(order)" class="btn btn-danger">标记为已入住</a>
-            <a @click="markAsAfter(order)" class="btn btn-danger">标记为已退房</a>
+            <a @click="markAsBefore(order)" class="btn btn-info">标记为已预定</a>
+            <a @click="markAsCurrent(order)" class="btn btn-warning">标记为已入住</a>
+            <a @click="markAsAfter(order)" class="btn btn-success">标记为已退房</a>
             <a @click="deleteOrder(order.id)" class="btn btn-danger">删除</a>
           </td>
         </tr>

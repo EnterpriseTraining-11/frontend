@@ -55,7 +55,7 @@ export default {
         .post("roomType/update", this.type)
         .then((response) => {
           console.log(response);
-          this.$router.go(-1);
+          this.goPrev()
         })
         .catch((error) => {
           console.log(error);

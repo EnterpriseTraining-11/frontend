@@ -44,6 +44,7 @@ export default {
   },
   created() {
     this.guest.idCard = this.idCard;
+    this.getOldVal();
   },
   methods: {
     add() {
@@ -52,6 +53,18 @@ export default {
         .post("guest/add-or-modify", this.guest)
         .then((response) => {
           console.log(response);
+          this.goPrev();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    getOldVal() {
+      this.axiosJSON
+        .post("guest/add-or-modify", this.guest)
+        .then((response) => {
+          console.log(response);
+          this.guest=response.data.model;
         })
         .catch((error) => {
           console.log(error);
