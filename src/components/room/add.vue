@@ -22,8 +22,6 @@
 </template>
 
 <script>
-import router from "../../router";
-
 export default {
   name: "RoomAdd",
   data() {
@@ -46,22 +44,20 @@ export default {
         .post("room/add", this.room)
         .then((response) => {
           console.log(response);
-          router.push("/room");
+          this.$router.push("/room");
         })
         .catch((error) => {
           console.log(error);
         });
     },
     getTypeList() {
-      this.axiosJSON.get("roomType/query/all", {
-          params: {}
-      }).then(response => {
+      this.axiosJSON.get("roomType/query/all/").then(response => {
           console.log(response);
           this.typeList = response.data.models;
       });
     },
     goPrev(){
-        router.go(-1);
+        this.$router.go(-1);
     }
   },
 };

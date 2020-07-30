@@ -26,6 +26,9 @@
             </ul>
           </td>
           <td>
+            <a @click="markAsBefore(order)" class="btn btn-danger">标记为已预定</a>
+            <a @click="markAsCurrent(order)" class="btn btn-danger">标记为已入住</a>
+            <a @click="markAsAfter(order)" class="btn btn-danger">标记为已退房</a>
             <a @click="deleteOrder(order.id)" class="btn btn-danger">删除</a>
           </td>
         </tr>
@@ -75,7 +78,7 @@ export default {
           this.orderList = response.data.models;
         });
     },
-    deleteRoom(order_id) {
+    deleteOrder(order_id) {
       let confirmResult = confirm("确认删除？");
       if (!confirmResult) {
         return;
@@ -92,6 +95,48 @@ export default {
           console.log(error);
         });
     },
+  },
+  markAsBefore(order) {
+    this.axiosJSON
+      .post("order/modify", {
+        id: order.id,
+        status: "预定",
+      })
+      .then((response) => {
+        console.log(response);
+        order.status = "预定";
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  markAsCurrent(order) {
+    this.axiosJSON
+      .post("order/modify", {
+        id: order.id,
+        status: "入住",
+      })
+      .then((response) => {
+        console.log(response);
+        order.status = "入住";
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  markAsAfter(order) {
+    this.axiosJSON
+      .post("order/modify", {
+        id: order.id,
+        status: "退房",
+      })
+      .then((response) => {
+        console.log(response);
+        order.status = "退房";
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
 };
 </script>

@@ -25,9 +25,6 @@
 </template>
 
 <script>
-
-import router from "../../router";
-
 export default {
   name: "RoomAddType",
   data() {
@@ -53,7 +50,7 @@ export default {
         });
     },
     goPrev(){
-        router.go(-1);
+        this.$router.go(-1);
     }
   }
 };

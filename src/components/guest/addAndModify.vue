@@ -29,8 +29,6 @@
 </template>
 
 <script>
-import router from "../../router";
-
 export default {
   name: "AddAndModifyGuest",
   props: { idCard: String },
@@ -60,7 +58,7 @@ export default {
         });
     },
     goPrev() {
-      router.go(-1);
+      this.$router.go(-1);
     },
   },
 };

@@ -24,8 +24,6 @@
 </template>
 
 <script>
-import router from "../../router";
-
 export default {
   name: "RoomModify",
   props: { roomId: Number },
@@ -46,7 +44,7 @@ export default {
         .post("room/modify", this.room)
         .then((response) => {
           console.log(response);
-          router.push("/room");
+          this.$router.push("/room");
         })
         .catch((error) => {
           console.log(error);
@@ -74,7 +72,7 @@ export default {
         });
     },
     goPrev() {
-      router.go(-1);
+      this.$router.go(-1);
     },
   },
 };

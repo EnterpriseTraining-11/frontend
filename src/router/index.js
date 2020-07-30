@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-  
+
 import HomeMain from '../components/home/main.vue'
 import MainContent from '../components/common/MainContent.vue'
 
@@ -15,6 +15,7 @@ import RoomListType from '../components/room/listType.vue'
 import AddAndModifyGuest from '../components/guest/addAndModify.vue'
 import GuestList from '../components/guest/list.vue'
 
+import OrderAdd from '../components/order/add.vue'
 import OrderList from '../components/order/list.vue'
 
 import AdminLogin from '../components/admin/login.vue'
@@ -69,7 +70,11 @@ const routes = [
         component: MainContent,
         children: [
             { path: '', redirect: 'list' },
-            { path: 'list', component: OrderList }
+            { path: 'list', component: OrderList },
+            {
+                path: 'add/:roomId', name:"OrderAdd", component: OrderAdd,
+                props: (route) => { console.log(route); return { roomId: parseInt(route.params.roomId) } }
+            }
         ]
     },
     {
@@ -103,10 +108,10 @@ router.beforeEach((to, from, next) => {
             console.log("to login")
             next({
                 path: '/login',
-                query: {redirect: to.fullPath}  // 将跳转的路由path作为参数，登录成功后跳转到该路由
+                query: { redirect: to.fullPath }  // 将跳转的路由path作为参数，登录成功后跳转到该路由
             })
         }
     }
-  })
+})
 
 export default router
