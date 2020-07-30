@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="getList" class="form-inline">
+    <form @submit.prevent="getList" @reset="resetFilter" class="form-inline">
       <div class="input-group">
         <span class="input-group-addon">身份证号</span>
         <input v-model="filter.idCard" type="text" class="form-control" />
@@ -20,6 +20,7 @@
       </div>
 
       <button type="submit" class="btn btn-primary">查询</button>
+      <button type="reset" class="btn btn-default">重置</button>
     </form>
     <table class="table table-bordered">
       <thead>
@@ -86,14 +87,14 @@ export default {
       this.axiosJSON
         .get("guest/query/all", {
           params: {
-              idCard:this.filter.idCard,
-              name:this.filter.name,
-              gender:this.filter.gender,
-              phone:this.filter.phone,
-              page:this.page,
-              rows:this.rows,
-              count:this.count,
-              pageCount:this.pageCount,
+            idCard: this.filter.idCard,
+            name: this.filter.name,
+            gender: this.filter.gender,
+            phone: this.filter.phone,
+            page: this.page,
+            rows: this.rows,
+            count: this.count,
+            pageCount: this.pageCount,
           },
         })
         .then((response) => {
@@ -117,6 +118,15 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    resetFilter() {
+      this.filter = {
+        idCard: null,
+        name: null,
+        gender: null,
+        phone: null,
+      };
+      this.getList();
     },
   },
 };

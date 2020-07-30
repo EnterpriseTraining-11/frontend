@@ -19,6 +19,8 @@ import GuestList from '../components/guest/list.vue'
 import OrderAdd from '../components/order/add.vue'
 import OrderList from '../components/order/list.vue'
 
+import StatisticList from '../components/statistic/main.vue'
+
 import AdminLogin from '../components/admin/login.vue'
 
 Vue.use(VueRouter)
@@ -73,8 +75,22 @@ const routes = [
             { path: '', redirect: 'list' },
             { path: 'list', component: OrderList },
             {
-                path: 'add/:roomId', name:"OrderAdd", component: OrderAdd,
+                path: 'add/:roomId', name: "OrderAdd", component: OrderAdd,
                 props: (route) => { console.log(route); return { roomId: parseInt(route.params.roomId) } }
+            }
+        ]
+    },
+    {
+        path: '/statistic',
+        component: MainContent,
+        children: [
+            { path: '', redirect: 'main' },
+            {
+                path: 'main',
+                component: StatisticList,
+                meta: {
+                    guestAvaliable: true,  // 添加该字段，表示进入这个路由是不需要登录的
+                },
             }
         ]
     },

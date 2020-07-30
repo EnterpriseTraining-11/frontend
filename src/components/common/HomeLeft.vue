@@ -20,19 +20,6 @@
           </div>
         </div>
 
-        <!-- search form (Optional) -->
-        <form action="#" method="get" class="sidebar-form">
-          <div class="input-group">
-            <input type="text" name="q" class="form-control" placeholder="Search..." />
-            <span class="input-group-btn">
-              <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                <i class="fa fa-search"></i>
-              </button>
-            </span>
-          </div>
-        </form>
-        <!-- /.search form -->
-
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">HEADER</li>
@@ -56,7 +43,7 @@
             </router-link>
           </li>
           <li>
-            <router-link to="/room">
+            <router-link to="/statistic">
               <i class="fa fa-link"></i>
               <span>表单</span>
             </router-link>
@@ -103,12 +90,13 @@ export default {
       return {name:"N/A"}
     },
     loggedIn(){
-      return this.user!=null;
+      return this.$store.state.loginUser!=null;
     }
   },
   methods:{
     logout(){
       this.$store.commit("logout");
+      this.$router.push("/")
     }
   }
 };

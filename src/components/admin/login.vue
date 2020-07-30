@@ -23,6 +23,7 @@
     <a href="#">忘记密码</a>
     <br />
     <a href="register.html" class="text-center">注册新用户</a>
+    <P class="text-danger">{{errMsg}}</P>
   </div>
 </template>
 

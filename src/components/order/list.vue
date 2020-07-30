@@ -47,8 +47,8 @@ export default {
         {
           id: 0,
           room: { code: "315", type: { name: "四人间" } },
-          start: new Date("December 17, 1995 03:24:00").toLocaleDateString(),
-          end: new Date("December 17, 2995 03:24:00").toLocaleDateString(),
+          start: new Date("December 17, 1995 03:24:00").toISOString().split('T')[0],
+          end: new Date("December 17, 2995 03:24:00").toISOString().split('T')[0],
           status: "绝赞活跃中",
           guests: [
             { name: "大力" },

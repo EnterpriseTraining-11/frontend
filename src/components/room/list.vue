@@ -1,8 +1,8 @@
 <template>
   <div>
-    <form @submit.prevent="getList" class="form-inline">
+    <form @submit.prevent="getList" @reset="resetFilter" class="form-inline">
       <div class="input-group">
-        <span class="input-group-addon">编号</span>
+        <span class="input-group-addon">代码</span>
         <input v-model="filter.code" type="text" class="form-control" />
       </div>
       <div class="input-group">
@@ -12,6 +12,8 @@
           <option v-for="type in typeList" v-bind:key="type.id" :value="type.name">{{type.name}}</option>
         </select>
       </div>
+      <button type="submit" class="btn btn-primary">查询</button>
+      <button type="reset" class="btn btn-default">重置</button>
     </form>
     <table class="table table-bordered">
       <thead>
@@ -104,6 +106,13 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    resetFilter() {
+      this.filter = {
+        code: null,
+        typeName: null,
+      };
+      this.getList();
     },
   },
 };
