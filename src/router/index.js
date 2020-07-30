@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '../store'
 
 import HomeMain from '../components/home/main.vue'
 import MainContent from '../components/common/MainContent.vue'
@@ -100,7 +101,8 @@ router.beforeEach((to, from, next) => {
         next();
     }
     else {
-        if (localStorage.getItem("authorize")) {  // 通过vuex state获取当前的token是否存在
+        console.log(store);
+        if (store.state.loginUser) {  // 通过vuex state获取当前的token是否存在
             console.log("authorized")
             next();
         }

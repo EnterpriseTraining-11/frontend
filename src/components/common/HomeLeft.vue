@@ -6,11 +6,11 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
           <div class="panel" v-bind:class="{'panel-info': loggedIn,'panel-danger':!loggedIn }">
-            <div class="panel-heading">{{username}}</div>
+            <div class="panel-heading">{{user.name}}</div>
             <div class="panel-body">
               <a v-if="loggedIn" href="#">
                 <i class="fa fa-circle text-success"></i>
-                <span>Online</span>
+                <span>Online<button @click="logout" class="btn btn-primary pull-right">Logout</button></span>
               </a>
               <a v-else href="#">
                 <i class="fa fa-circle .text-secondary"></i>
@@ -86,21 +86,31 @@
 <script>
 export default {
   name: "HomeLeft",
+  props:{
+    loginUser:Object
+  },
   data() {
     return {
-      username: "N/A",
-      loggedIn: false,
     };
   },
   created() {
-    if (localStorage.getItem("authorize")) {
-      let authorize = JSON.parse(localStorage.getItem("authorize"));
-      if (authorize) {
-        this.username = authorize.name;
-        this.loggedIn = authorize.token;
+  },
+  computed:{
+    user(){
+      if(this.loginUser!=null){
+        return this.loginUser;
       }
+      return {name:"N/A"}
+    },
+    loggedIn(){
+      return this.user!=null;
     }
   },
+  methods:{
+    logout(){
+      this.$store.commit("logout");
+    }
+  }
 };
 </script>
 

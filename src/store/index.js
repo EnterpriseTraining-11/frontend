@@ -5,16 +5,25 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    token:false
+    loginUser:null
+  },
+  getters:{
+    loginUser: state => {
+      return state.loginUser;
+    }
   },
   mutations: {
-      authorize (state, token) {
-        // 变更状态
-        state.token = token;
-        
-      }
+      login (state, loginUser) {
+        state.loginUser = loginUser;
+        localStorage.setItem("loginUser", JSON.stringify(loginUser));
+      },
+      logout(state) {
+        state.loginUser = null;
+        localStorage.removeItem("loginUser");
+      },
   },
   actions: {
+
   },
   modules: {
   }

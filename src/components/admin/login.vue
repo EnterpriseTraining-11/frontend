@@ -34,30 +34,30 @@ export default {
       id: null,
       name: null,
       password: null,
+      errMsg:""
     };
   },
   methods: {
     login() {
       this.axiosJSON
-        .get("restApi", {
-          params: {
-            name: this.name,
-            password: this.password,
-          },
+        .post("admin/login", {
+          name: this.name,
+          password: this.password,
         })
         .then((response) => {
-          //TODO
-        //   store.commit("authorize", "123");
-        //   route.push(route.params.redirect);
+          let user = response.data.model;
+          if(user==null){
+            this.errMsg = response.data.message;
+            return;
+          }
+          this.$store.commit("login", user);
+          this.$router.push(this.$route.query.redirect);
         });
 
       //DEBUG
-      localStorage.setItem("authorize", "{\"name\":\"Laurence042\",\"token\":\"123\"}");
-      console.log(this.$route.query);
-      this.$router.push( this.$route.query.redirect);
     },
   },
-}
+};
 </script>
 
 <style>

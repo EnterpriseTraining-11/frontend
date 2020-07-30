@@ -22,7 +22,10 @@
       <div class="form-group">
         <h2>添加入住人员信息</h2>
         <h3>已添加：</h3>
-        <p v-for="guest in order.guests" v-bind:key="guest.idCard">{{guest.name}}</p>
+        <div  v-for="guest in order.guests" v-bind:key="guest.idCard">
+          <p>{{guest.name}}</p>
+          <button @click="removeAddedGuest(guest)" class="btn btn-primary">移除</button>
+        </div>
       </div>
 
       <form @submit.prevent="addGuest()">
@@ -37,7 +40,7 @@
         <div class="form-group">
           <label>性别</label>
           <select v-model="guestToAdd.gender" class="form-control">
-            <option disabled value>请选择性别</option>
+            <option :value="null" selected>根据身份证从数据库中查找</option>
             <option>男</option>
             <option>女</option>
             <option>非二元性别</option>
@@ -66,18 +69,18 @@ export default {
     return {
       order: {
         room: { id: null },
-        start: null,
-        end: null,
+        start: new Date().toISOString().split('T')[0], // format as yyy-MM-dd
+        end: new Date().toISOString().split('T')[0],
         status: null,
-        guests: []
+        guests: [],
       },
       guestToAdd: {
-          id: null,
-          idCard: null,
-          name: null,
-          gender: null,
-          phone: null,
-        },
+        id: null,
+        idCard: null,
+        name: null,
+        gender: null,
+        phone: null,
+      },
     };
   },
   created() {
@@ -101,11 +104,24 @@ export default {
         .post("guest/add-or-modify", this.guestToAdd)
         .then((response) => {
           console.log(response);
-          this.order.guests.add(response.data.model);
+          this.order.guests.push(response.data.model);
+          this.resetGuest();
         })
         .catch((error) => {
           console.log(error);
         });
+    },
+    resetGuest() {
+      this.guestToAdd = {
+        id: null,
+        idCard: null,
+        name: null,
+        gender: null,
+        phone: null,
+      };
+    },
+    removeAddedGuest(addedGuest) {
+      this.order.guests.pop(addedGuest);
     },
     goPrev() {
       this.$router.go(-1);
