@@ -95,48 +95,48 @@ export default {
           console.log(error);
         });
     },
-  },
-  markAsBefore(order) {
-    this.axiosJSON
-      .post("order/modify", {
-        id: order.id,
-        status: "预定",
-      })
-      .then((response) => {
-        console.log(response);
-        order.status = "预定";
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  },
-  markAsCurrent(order) {
-    this.axiosJSON
-      .post("order/modify", {
-        id: order.id,
-        status: "入住",
-      })
-      .then((response) => {
-        console.log(response);
-        order.status = "入住";
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  },
-  markAsAfter(order) {
-    this.axiosJSON
-      .post("order/modify", {
-        id: order.id,
-        status: "退房",
-      })
-      .then((response) => {
-        console.log(response);
-        order.status = "退房";
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    markAsBefore(order) {
+      this.axiosJSON
+        .post("order/modify", {
+          id: order.id,
+          status: "预定",
+        })
+        .then((response) => {
+          console.log(response);
+          order.status = "预定";
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    markAsCurrent(order) {
+      this.axiosJSON
+        .post("order/modify", {
+          id: order.id,
+          status: "入住",
+        })
+        .then((response) => {
+          console.log(response);
+          order.status = "入住";
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    markAsAfter(order) {
+      this.axiosJSON
+        .post("order/modify", {
+          id: order.id,
+          status: "退房",
+        })
+        .then((response) => {
+          console.log(response);
+          order.status = "退房";
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   },
 };
 </script>
